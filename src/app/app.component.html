@@ -1,0 +1,40 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{app_name}}
+  </h1>
+  </div>
+
+   <nav id="navbar-worksmenu" class="navbar navbar-light bg-light">
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <!--<a class="nav-link" href="#viewall">View All</a>-->
+                <a routerLink='/viewall' class="w3-bar-item w3-button">View All</a>
+            </li>
+             <li class="nav-item">
+               <a routerLink='/create' class="w3-bar-item w3-button">Create</a>
+            </li>
+              <li class="nav-item">
+                <a routerLink='/category' class="w3-bar-item w3-button">Category</a>
+            </li>
+             <li class="nav-item">
+                <a routerLink='/track' class="w3-bar-item w3-button">Track</a>
+            </li>
+
+        </ul>
+    </nav>
+<h2>Here are some links to help you start: </h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>
+
