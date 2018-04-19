@@ -15,3 +15,9 @@ git add ..
 git commit -m "first commit"
 git remote add origin https://github.com/neojilz/JIJILWT.git
 git push -u origin master
+
+Add this
+
+node_modules/
+to .gitignore file to ignore all directories called node_modules in current folder and any subfolders
+
