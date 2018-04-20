@@ -21,3 +21,5 @@ Add this
 node_modules/
 to .gitignore file to ignore all directories called node_modules in current folder and any subfolders
 
+Proxy issue:
+git config --global http.proxy http://413575:pwd@proxy.cognizant.com:8080
