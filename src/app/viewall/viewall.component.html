@@ -1,3 +1,12 @@
-<p>
+
   viewall works!
-</p>
+  <!-- {{ workout1.title }}
+  {{ workout2.title }} -->
+  <div *ngFor="let workout of workouts" >
+     {{ workout.title}}
+     <input type="button" value="Edit" (click)="eit(workout)" >
+     <input type="button" value="Delete" (click)="delete(workout)" >
+     <input type="button" value="Start" (click)="start(workout)" >
+     <input type="button" value="End" (click)="end(workout)" >
+
+  </div>

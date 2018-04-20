@@ -23,3 +23,11 @@ to .gitignore file to ignore all directories called node_modules in current fold
 
 Proxy issue:
 git config --global http.proxy http://413575:pwd@proxy.cognizant.com:8080
+
+For error  - while  npm install -g @angular/cli
+ stack: 'Error: EPERM: operation not permitted, npm cache verify -DIDN'T work at office.
+
+Given FULL Rights node_modules folders (Locally)
+Ran npm install  @angular/cli without -g 
+then ran npm start (ng serve threw errros).
+

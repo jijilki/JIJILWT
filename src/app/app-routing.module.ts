@@ -11,7 +11,7 @@ const routes:Routes=[
   {path:'track' , component:TrackComponent},
   {path:'category',component:CategoryComponent}
 ];
-alert("hhhhh")
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
