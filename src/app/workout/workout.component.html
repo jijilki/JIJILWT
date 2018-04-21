@@ -1,0 +1,11 @@
+
+  create works!
+  <div *ngFor="let workout of selectedworkouts" >
+  <input [(ngModel)]="workout.title" [ngModelOptions]="{updateOn: 'blur'}">
+  <input [(ngModel)]="workout.note" [ngModelOptions]="{updateOn: 'blur'}">
+  <input [(ngModel)]="workout.cbpm" [ngModelOptions]="{updateOn: 'blur'}">
+  <input [(ngModel)]="workout.category" [ngModelOptions]="{updateOn: 'blur'}">
+  <button id="formBtn" class="btn-default" (click)="updateworkitem(workout)">{{workoutPageAction}} Workout</button>				
+ </div>
+ <p></p>
+
