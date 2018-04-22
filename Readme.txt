@@ -19,6 +19,10 @@ git push -u origin master
 
 ng generate module services
 
+Creating services inside a module/folder
+ng generate service services/Test //cli can take a directory if getting error try to create module first and generate services -look below.
+Following the comment below, you might need to first run:
+
 
 ========================================================Environment setup thingies===========================================================
 Add this
@@ -39,9 +43,6 @@ then ran npm start (ng serve threw errros).
 Again has issues to run ng generate. Copied local npm modules to global folder.Worked like a charm
 
 
-Creating services inside a module/folder
-ng generate service services/Test //cli can take a directory if getting error try to create module first and generate services -look below.
-Following the comment below, you might need to first run:
 
 
 

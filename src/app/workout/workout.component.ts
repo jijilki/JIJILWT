@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 //import 'rxjs/add/operator/switchMap';
 
 import {  workout } from '../workout';
+import {} from '..//cat'
 import { WorkoutService } from '../services/workout.service' 
 
 
@@ -24,7 +25,13 @@ export class WorkoutComponent implements OnInit {
     title:new FormControl('',Validators.required),
     note:new FormControl('',Validators.required),
     cbpm:new FormControl('',Validators.required),
-    category:new FormControl('',Validators.required)
+    categoryName: new FormControl('',Validators.required)
+    // category:{
+    //   _catid: new FormControl('',Validators.required)
+    // }
+
+    //_catid: new FormControl('',Validators.required),
+    
 
   });
 
@@ -63,7 +70,7 @@ export class WorkoutComponent implements OnInit {
       title:this.selectedworkouts[0].title,
       note:this.selectedworkouts[0].note,
       cbpm:this.selectedworkouts[0].cbpm,
-      category:this.selectedworkouts[0].category,
+      categoryName:this.selectedworkouts[0].category.categoryName,
     });
   }
 
