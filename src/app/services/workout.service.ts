@@ -15,7 +15,9 @@ export class WorkoutService {
     return of(this.workouts);
   }
 
-  saveWorkout(workoutId:workout):Observable<workout[]>{
+  saveWorkout(workout:workout):Observable<workout[]>{
+    //Test Purpose
+    this.workouts.push(workout);
     return of(this.workouts);
   }
 

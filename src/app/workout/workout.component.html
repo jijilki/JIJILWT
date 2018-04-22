@@ -1,11 +1,37 @@
 
   create works!
-  <div *ngFor="let workout of selectedworkouts" >
+  <h3 *ngIf="workoutPageAction;else create">
+    Edit Workout
+</h3>
+<ng-template #create>
+   <h3>Add Workout </h3>
+</ng-template>
+
+  <!--<div *ngFor="let workout of selectedworkouts" >
   <input [(ngModel)]="workout.title" [ngModelOptions]="{updateOn: 'blur'}">
   <input [(ngModel)]="workout.note" [ngModelOptions]="{updateOn: 'blur'}">
   <input [(ngModel)]="workout.cbpm" [ngModelOptions]="{updateOn: 'blur'}">
   <input [(ngModel)]="workout.category" [ngModelOptions]="{updateOn: 'blur'}">
-  <button id="formBtn" class="btn-default" (click)="updateworkitem(workout)">{{workoutPageAction}} Workout</button>				
- </div>
+  <button id="formBtn" class="btn-default" (click)="updateworkitem(workout)">{{workoutPageAction}} Workout</button>			
+  <tr><td colspan="2">
+	  <button *ngIf="workoutPageAction==='Update'">UPDATE</button>  
+	  <button *ngIf="articleIdToUpdate==='Create'">CREATE</button>  
+	  <button (click)="backToCreateArticle()" *ngIf="articleIdToUpdate">Go Back</button>  
+    </td></tr>	
+ </div>-->
+<!--=====================================================================================================-->
+
+<form [formGroup]="workoutForm" (ngSubmit)="onWorkoutFormSubmit()">
+  <table>
+    <tr><td>Title:</td><td><input formControlName="title" ></td></tr>
+    <tr><td>Note:</td><td><input formControlName="note"></td></tr>
+    <tr><td>Calories Burn Per Minute:</td><td><input formControlName="cbpm"></td></tr>
+    <tr><td>Category:</td><td><input formControlName="category"></td></tr>
+     <tr><td colspan="2"> 
+	  <button *ngIf="workoutPageAction==='Update'">UPDATE</button>  
+	  <button *ngIf="workoutPageAction!=='Update'">CREATE</button>  
+    </td></tr>	
+  </table>
+
  <p></p>
 

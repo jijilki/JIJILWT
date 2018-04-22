@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 //import 'rxjs/add/operator/switchMap';
 
 import {  workout } from '../workout';
@@ -18,6 +19,14 @@ export class WorkoutComponent implements OnInit {
   selectedworkouts:workout[];
   workout:workout;
   workoutPageAction:String;
+  workoutForm = new FormGroup({
+    _id:new FormControl('',Validators.required),
+    title:new FormControl('',Validators.required),
+    note:new FormControl('',Validators.required),
+    cbpm:new FormControl('',Validators.required),
+    category:new FormControl('',Validators.required)
+
+  });
 
   constructor(
     //This introduced for the snapshot error.
@@ -49,6 +58,13 @@ export class WorkoutComponent implements OnInit {
     //alert("Inside get Workout");
     this.workoutService.getAllWorkouts().subscribe(workouts => this.selectedworkouts = workouts.filter(selectedworkouts => selectedworkouts._id=== workoutId) );
     console.log(this.selectedworkouts);
+    this.workoutForm.setValue({
+      _id:this.selectedworkouts[0].title,
+      title:this.selectedworkouts[0].title,
+      note:this.selectedworkouts[0].note,
+      cbpm:this.selectedworkouts[0].cbpm,
+      category:this.selectedworkouts[0].category,
+    });
   }
 
   insertupdateWorkout(workout:workout){
@@ -59,12 +75,23 @@ export class WorkoutComponent implements OnInit {
   }
 
 
-  //From UI
-  updateworkitem(workout:workout){
-    //alert(workoutId);
-    // this.router.navigate(['/updateworkout/'+workout]);
-    this.workout=workout;
-    this.insertupdateWorkout(this.workout);
-  }
+  // //From UI
+  // updateworkitem(workout:workout){
+  //   //alert(workoutId);
+  //   // this.router.navigate(['/updateworkout/'+workout]);
+  //   this.workout=workout;
+  //   this.insertupdateWorkout(this.workout);
+  // }
+
+  onWorkoutFormSubmit(){
+    console.log("Inside onWorkoutFormSubmit");
+    let workout = this.workoutForm.value;
+    if(workout._id===undefined || workout._id===""){
+      //GetMax id from the table and assign
+      workout._id=1344353;
+    }
+
+    this.insertupdateWorkout(workout);
+  };
 
 }
