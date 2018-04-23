@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { category } from '../category';
+import {  category } from '../category';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
@@ -15,5 +15,10 @@ export class CategoryService {
   getCategoryList():Observable<category[]>{
     return of(this.category);
   }
-
+  saveCategory(category1:category):Observable<category[]>{
+    //Test Purpose
+    category1._catid="0001";
+    this.category.push(category1);
+    return of(this.category);
+  }
 }

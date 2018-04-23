@@ -1,3 +1,33 @@
 <p>
   category works!
 </p>
+
+
+<!-- 
+<input type="text"  id="srchWorkoutTxt" name="srchWorkoutTxt" [(ngModel)]="srchWorkoutTxt"  placeholder="Search">
+
+<div *ngIf="error!=null" class="row alert alert-danger">{{error}}</div>  
+
+ -->
+
+
+<div class="row" id="inner-content-3">
+  <div class="col-md-4 col-sm-4 col-xs-4">
+    <input type="text" class="form-control" id="srchWorkoutTxt" name="srchWorkoutTxt" [(ngModel)]="srchWorkoutTxt" placeholder="Search">
+  </div>
+  <div *ngIf="error!=null" class="row alert alert-danger">{{error}}</div>
+</div>
+
+Add Category
+<div class="row" id="inner-content-3">
+  <div class="col-md-4 col-sm-6 col-xs-6">
+    <input type="text" class="form-control" id="categoryNm" name="categoryName" [(ngModel)]="newCategoryName">
+  </div>
+  <div class="col-md-2 col-sm-2 col-xs-2">
+    <button id="btn2" (click)="addnewcategory()">+</button>
+  </div>
+</div>
+
+<div *ngFor="let category of categoryList | categoryPipe:srchWorkoutTxt">
+  {{ category.categoryName}}
+</div>

@@ -25,7 +25,7 @@ export class ViewallComponent implements OnInit {
     }
 
   getAllWorkouts():void{
-    this.workoutService.getAllWorkouts().subscribe(workouts => this.workouts = workouts );
+    this.workoutService.getAllWorkouts().subscribe(data => this.workouts = data );
   }
 
   edit(workout:workout): void { 

@@ -14,12 +14,15 @@ import { CategoryService } from '../services/category.service'
 
 
 export class CategoryComponent implements OnInit {
-  
+  error: any;
   categoryList : category[];
+  category:category;
+  newCategoryName:string;
+  srchWorkoutTxt:String;
 
   constructor(
     private categoryService:CategoryService,
-    private category:category
+    
 
   ) { }
 
@@ -28,9 +31,23 @@ export class CategoryComponent implements OnInit {
   }
 
   getCategory(){
-    this.categoryService.getCategoryList().subscribe(category =>{this.categoryList = category});
+     this.categoryService.getCategoryList().subscribe(data => this.categoryList = data );
   }
 
+  addnewcategory(){
+    console.log(+"Adding");
+    if (!this.newCategoryName) { 
+			this.error="Category Name is Mandatory";
+			return; 
+	   }	  
+	  this.error=null;
+      this.category=new category();	  
+	  this.category.categoryName=this.newCategoryName;
+	  console.log("this.category   "+this.category);
+	  this.categoryService.saveCategory(this.category).subscribe(data => this.categoryList=data);        
+  
+  } 
+  
 
   
 

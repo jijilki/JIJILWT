@@ -11,7 +11,11 @@ import { CategoryComponent } from './category/category.component';
 import { TrackComponent } from './track/track.component';
 import { TestComponent } from './test/test.component';
 
-import { WorkoutService } from './services/workout.service'
+
+
+import { WorkoutService } from './services/workout.service';
+import { CategoryService } from './services/category.service';
+import { CategoryPipe } from './pipes/category.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,8 @@ import { WorkoutService } from './services/workout.service'
     WorkoutComponent,
     CategoryComponent,
     TrackComponent,
-    TestComponent
+    TestComponent,
+    CategoryPipe
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,8 @@ import { WorkoutService } from './services/workout.service'
     ReactiveFormsModule
   ],
   providers: [
-    WorkoutService
+    WorkoutService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
   
