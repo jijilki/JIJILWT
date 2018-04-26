@@ -1,30 +1,50 @@
-
-  create works!
-  <h3 *ngIf="workoutPageAction;else create">
-    Edit Workout
+ create works!
+<h3 *ngIf="workoutPageAction;else create">
+  Edit Workout
 </h3>
 <ng-template #create>
-   <h3>Add Workout </h3>
+  <h3>Add Workout </h3>
 </ng-template>
 
 
 
 <form [formGroup]="workoutForm" (ngSubmit)="onWorkoutFormSubmit()">
   <table>
-    <tr><td>Title:</td><td><input formControlName="title" ></td></tr>
-    <tr><td>Note:</td><td><input formControlName="note"></td></tr>
-    <tr><td>Calories Burn Per Minute:</td><td><input formControlName="cbpm"></td></tr>
+    <tr>
+      <td>Title:</td>
+      <td>
+        <input formControlName="title">
+      </td>
+    </tr>
+    <tr>
+      <td>Note:</td>
+      <td>
+        <input formControlName="note">
+      </td>
+    </tr>
+    <tr>
+      <td>Calories Burn Per Minute:</td>
+      <td>
+        <input formControlName="cbpm">
+      </td>
+    </tr>
     <!-- <tr><td>Category:</td><td><input formControlName="categoryName"></td></tr> -->
-    <tr><td>Category:</td><td>
-    <select class="form-control" formControlName="categoryName">
-      <option *ngFor="let category of categories" [value]="category.categoryName">{{category.categoryName}}</option>
-  </select>
-</td></tr> 
-     <tr><td colspan="2"> 
-	  <button *ngIf="workoutPageAction==='Update'">UPDATE</button>  
-	  <button *ngIf="workoutPageAction!=='Update'">CREATE</button>  
-    </td></tr>	
+    <tr>
+      <td>Category:</td>
+      <td>
+        <!-- <div formGroupName="category"> -->
+          <select class="form-control" formGroupName="category">
+            <option *ngFor="let category of categories" [value]="category.categoryName">{{category.categoryName}}</option>
+          </select>
+        <!-- </div> -->
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button *ngIf="workoutPageAction==='Update'">UPDATE</button>
+        <button *ngIf="workoutPageAction!=='Update'">CREATE</button>
+      </td>
+    </tr>
   </table>
 
- <p></p>
-
+  <p></p>

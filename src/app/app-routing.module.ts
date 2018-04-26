@@ -5,6 +5,7 @@ import { CategoryComponent } from './category/category.component';
 import { WorkoutComponent } from './workout/workout.component';
 import { TrackComponent } from './track/track.component';
 import { ViewallComponent } from './viewall/viewall.component';
+import { ActiveworkoutComponent } from './activeworkout/activeworkout.component'
 const routes:Routes=[
   //Route from landing page.
   {path:'viewall' ,component:ViewallComponent},
@@ -15,6 +16,10 @@ const routes:Routes=[
   //Route from other screens.
   {path:'editworkout/:id',component:WorkoutComponent,data:{page:'editworkout'}},
   {path:'updateworkout/:id',component:WorkoutComponent,data:{page:'updateworkout'}},
+
+  {path:'startworkout/:id',component:ActiveworkoutComponent,data:{page:'startworkout'}},
+  {path:'endworkout/:id',component:ActiveworkoutComponent,data:{page:'endworkout'}},
+
 ];
 
 

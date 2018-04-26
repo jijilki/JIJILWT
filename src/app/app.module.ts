@@ -15,7 +15,9 @@ import { TestComponent } from './test/test.component';
 
 import { WorkoutService } from './services/workout.service';
 import { CategoryService } from './services/category.service';
+import { ActiveworkoutService } from './services/activeworkout.service';
 import { CategoryPipe } from './pipes/category.pipe';
+import { ActiveworkoutComponent } from './activeworkout/activeworkout.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { CategoryPipe } from './pipes/category.pipe';
     CategoryComponent,
     TrackComponent,
     TestComponent,
-    CategoryPipe
+    CategoryPipe,
+    ActiveworkoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,9 @@ import { CategoryPipe } from './pipes/category.pipe';
   ],
   providers: [
     WorkoutService,
-    CategoryService
+    CategoryService,
+    ActiveworkoutService,
+
   ],
   bootstrap: [AppComponent]
   
