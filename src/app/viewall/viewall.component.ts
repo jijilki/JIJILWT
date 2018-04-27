@@ -40,7 +40,6 @@ export class ViewallComponent implements OnInit {
   };
   
   start(workout:workout): void { 
-    alert('inside start of '+ workout.title);
     this.router.navigate(['/startworkout/'+workout._id]);
   };
 

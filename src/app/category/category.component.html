@@ -30,4 +30,6 @@ Add Category
 
 <div *ngFor="let category of categoryList | categoryPipe:srchWorkoutTxt">
   {{ category.categoryName}}
+  <input type="button" value="Edit" (click)="edit(category)" >
+  <input type="button" value="Delete" (click)="delete(category)" >
 </div>

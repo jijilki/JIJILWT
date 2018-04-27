@@ -68,7 +68,7 @@ export class WorkoutComponent implements OnInit {
     this.workoutService.getAllWorkouts().subscribe(data => this.selectedworkouts = data.filter(selectedworkouts => selectedworkouts._id === workoutId));
     console.log(this.selectedworkouts);
     this.workoutForm.setValue({
-      _id: this.selectedworkouts[0].title,
+      _id: this.selectedworkouts[0]._id,
       title: this.selectedworkouts[0].title,
       note: this.selectedworkouts[0].note,
       cbpm: this.selectedworkouts[0].cbpm,
@@ -97,7 +97,7 @@ export class WorkoutComponent implements OnInit {
     let workout = this.workoutForm.value;
     if (workout._id === undefined || workout._id === "") {
       //GetMax id from the table and assign
-      workout._id = 1344353;
+     
     }
 
     this.insertupdateWorkout(workout);

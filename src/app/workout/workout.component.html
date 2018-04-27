@@ -33,10 +33,15 @@
       <td>Category:</td>
       <td>
         <!-- <div formGroupName="category"> -->
-          <select class="form-control" formGroupName="category">
-            <option *ngFor="let category of categories" [value]="category.categoryName">{{category.categoryName}}</option>
+          <select formGroupName="category" >
+            <div formControlName="categoryName" >
+            <option *ngFor="let category of categories">{{category}}</option>
+            <!-- <option *ngFor="let category of categories" ></option> -->
+          </div>
           </select>
+          
         <!-- </div> -->
+          <!-- </div> -->
       </td>
     </tr>
     <tr>

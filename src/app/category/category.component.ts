@@ -44,11 +44,28 @@ export class CategoryComponent implements OnInit {
       this.category=new category();	  
 	  this.category.categoryName=this.newCategoryName;
 	  console.log("this.category   "+this.category);
-	  this.categoryService.saveCategory(this.category).subscribe(data => this.categoryList=data);        
-  
+	  this.categoryService.saveCategory(this.category).subscribe(data =>{
+      this.getCategory();
+    }  );     
+    
   } 
   
-
+  delete(category:category){
+    console.log("Inside delete category");
+    this.category=category;
+    this.categoryService.deleteCategory(this.category).subscribe(data =>{
+        this.getCategory();
+    } );
+    
+  }
   
+  edit(category:category){
+    console.log("Inside delete category");
+    this.category=category;
+    this.categoryService.updateCategory(this.category).subscribe(data =>{
+        this.getCategory();
+    } );
+    
+  }
 
 }

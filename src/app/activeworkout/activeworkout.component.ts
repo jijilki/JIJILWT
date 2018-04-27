@@ -63,11 +63,11 @@ export class ActiveworkoutComponent implements OnInit {
       this.startActiveWorkout();
 
     }
-    else if (this.page === 'endActWorkout') {
+    // else if (this.page === 'endActWorkout') {
 
-      this.endActiveWorkout();
+    //   this.endActiveWorkout();
 
-    }
+    // }
 
   }
 
@@ -87,7 +87,16 @@ export class ActiveworkoutComponent implements OnInit {
 
   endActiveWorkout() { }
 
-  startOrStopWorkitem() { }
+  startOrStopWorkitem() {
+
+    if(this.workoutPageAction === "End"){
+      console.log("Ending active work item");
+      // Saving it in Database.
+      this.activeWorkout = new activeworkout();
+      this.workoutPageAction="Start";
+    }
+
+   }
 
   getWorkout() {
     this.workoutService.getAllWorkouts().subscribe(data => this.selectedworkouts = data.filter(selectedworkouts => selectedworkouts._id === this.workoutId));
