@@ -6,12 +6,12 @@ import { Response, Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
-import { CATEGORIES } from '../mock/categorymocks'
+//import { CATEGORIES } from '../mock/categorymocks'
 
 @Injectable()
 export class CategoryService {
 
-  category = CATEGORIES;
+ // category = CATEGORIES;
   APP_URL = 'http://localhost:8080'
   _getCategoryUrl = this.APP_URL + '/getCategories';
   _addCategoryUrl = this.APP_URL + '/addCategory';

@@ -16,6 +16,8 @@ import { Router } from '@angular/router';
 export class ViewallComponent implements OnInit {
   //workouts = WORKOUTS;
   workouts : workout[];
+  workout:workout;
+  viewWorkoutPageAction:String;
 
   constructor(private workoutService:WorkoutService ,private router:Router) { }
 
@@ -30,22 +32,24 @@ export class ViewallComponent implements OnInit {
 
   edit(workout:workout): void { 
     //alert('inside edit of '+ workout.title);
-    this.router.navigate(['/editworkout/'+workout._id]);
+    this.router.navigate(['/editworkout/'+workout.workout_id]);
   };
 
   delete(workout:workout): void { 
-    alert('inside delete of '+ workout.title);
-    var index = this.workouts.findIndex(x=>x.title === workout.title)
-    this.workouts.splice(index,1);
+    // alert('inside delete of '+ workout.workout_title);
+    // var index = this.workouts.findIndex(x=>x.workout_title === workout.workout_title)
+    // this.workouts.splice(index,1);
+    this.router.navigate(['/deleteworkout/'+workout.workout_id]);
   };
   
   start(workout:workout): void { 
-    this.router.navigate(['/startworkout/'+workout._id]);
+    this.viewWorkoutPageAction =='Start';
+    this.router.navigate(['/startworkout/'+workout.workout_id]);
   };
 
   end(workout:workout): void { 
-    alert('inside end of '+ workout.title);
-    this.router.navigate(['/endworkout/'+workout._id]);
+    this.viewWorkoutPageAction =='Start';
+    this.router.navigate(['/endworkout/'+workout.workout_id]);
   };
 
 }

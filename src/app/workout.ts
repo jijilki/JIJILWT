@@ -1,8 +1,8 @@
 import { category } from "./category";
 export class workout {
-    _id:String;
-    title:String;
-    note:String;
+    workout_id:number;
+    workout_title:String;
+    workout_note:String;
     cbpm:Number;
     category:category;
 }

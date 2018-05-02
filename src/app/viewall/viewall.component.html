@@ -3,10 +3,10 @@
   <!-- {{ workout1.title }}
   {{ workout2.title }} -->
   <div *ngFor="let workout of workouts" >
-     {{ workout.title}}
+     {{ workout.workout_title}}
      <input type="button" value="Edit" (click)="edit(workout)" >
      <input type="button" value="Delete" (click)="delete(workout)" >
-     <input type="button" value="Start" (click)="start(workout)" >
-     <input type="button" value="End" (click)="end(workout)" >
+     <input *ngIf="viewWorkoutPageAction!=='End'" type="button" value="Start" (click)="start(workout)" >
+     <input *ngIf="viewWorkoutPageAction !=='Start'" type="button" value="End" (click)="end(workout)" >
 
   </div>

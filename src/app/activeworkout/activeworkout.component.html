@@ -2,24 +2,39 @@
   activeworkout works!
 </p>
 
-<h3 *ngIf="workoutPageAction;else create">
-  End Workout
+<h3 *ngIf="workoutPageAction;else end">
+  Start Workout
 </h3>
-<ng-template #create>
- <h3>Start Workout </h3>
+<ng-template #end>
+  <h3>End Workout </h3>
 </ng-template>
 
 
 
 <form [formGroup]="activeWorkoutForm" (ngSubmit)="startOrStopWorkitem()">
-<table>
-  <tr><td>Title:</td><td><input formControlName="activeTitle" ></td></tr>
-  <tr><td>Note:</td><td><input formControlName="activeComment"></td></tr>
-  <tr><td>{{workoutPageAction}} Date:</td><td><input formControlName="activeStartDate"></td></tr>
-  <!-- <tr><td>Category:</td><td><input formControlName="categoryName"></td></tr> -->
-   <tr><td colspan="2"> 
-  <button *ngIf="workoutPageAction==='End'">End</button>  
-  <button *ngIf="workoutPageAction!=='End'">Start</button>  
-  </td></tr>	
-</table>
+  <table>
+    <tr>
+      <td>Title:</td>
+      <td><input formControlName="workout_title"></td>
+    </tr>
+    <tr>
+      <td>Note:</td>
+      <td><input formControlName="workout_note"></td>
+    </tr>
 
+    <tr>
+      <td>{{workoutPageAction}} Date:</td>
+      <td><input *ngIf="workoutPageAction=='Start'" formControlName="start_dt">
+        <input *ngIf="workoutPageAction=='End'" formControlName="end_dt"></td>
+    </tr>
+    <tr>
+      <td> {{workoutPageAction}} Time:</td>
+      <td><input *ngIf="workoutPageAction=='Start'" formControlName="start_time">
+        <input *ngIf="workoutPageAction=='End'" formControlName="end_time"></td>
+      <tr>
+        <td colspan="2">
+          <button *ngIf="workoutPageAction==='End'">End</button>
+          <button *ngIf="workoutPageAction!=='End'">Start</button>
+        </td>
+      </tr>
+  </table>

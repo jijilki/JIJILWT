@@ -19,18 +19,21 @@ export class WorkoutComponent implements OnInit {
   workoutId: String;
   page: String;
   selectedworkouts: workout[];
+  selWos: workout[];
+  workouts : workout[];
   workout: workout;
   workoutPageAction: String;
   categories: category[];
   workoutForm = new FormGroup({
-    _id: new FormControl('', Validators.required),
-    title: new FormControl('', Validators.required),
-    note: new FormControl('', Validators.required),
+    workout_id: new FormControl('', Validators.required),
+    workout_title: new FormControl('', Validators.required),
+    workout_note: new FormControl('', Validators.required),
     cbpm: new FormControl('', Validators.required),
     category: new FormGroup({
-      _catid: new FormControl('', Validators.required),
+      _catId: new FormControl('', Validators.required),
       categoryName: new FormControl('', Validators.required)
     })
+    
 
   });
 
@@ -53,27 +56,38 @@ export class WorkoutComponent implements OnInit {
     this.page = this.route.snapshot.data.page;
     if (this.page === 'editworkout') {
       this.workoutPageAction = "Update";
-      this.getWorkout(this.workoutId);
+      this.getWorkout(Number(this.workoutId));
     }
     else if (this.page === 'createworkout') {
       this.workout = new workout();
       // this.selectedworkouts.push(this.workout);
     }
+    else if(this.page==='deleteworkout'){
+      this.deleteWorkout(Number(this.workoutId));
+    }
   }
 
 
 
-  getWorkout(workoutId: String) {
+
+  getWorkout(workoutId: number) {
     //alert("Inside get Workout");
-    this.workoutService.getAllWorkouts().subscribe(data => this.selectedworkouts = data.filter(selectedworkouts => selectedworkouts._id === workoutId));
-    console.log(this.selectedworkouts);
+    //this.workoutService.getAllWorkouts().subscribe(data =>{
+ this.workoutService.getAllWorkouts().subscribe(data =>{ this.selWos = data ;
+this.selectedworkouts = this.selWos.filter(selectedwo => selectedwo.workout_id == workoutId)
+
+console.log(this.selectedworkouts);
     this.workoutForm.setValue({
-      _id: this.selectedworkouts[0]._id,
-      title: this.selectedworkouts[0].title,
-      note: this.selectedworkouts[0].note,
+      workout_id: this.selectedworkouts[0].workout_id,
+      workout_title: this.selectedworkouts[0].workout_title,
+      workout_note: this.selectedworkouts[0].workout_note,
       cbpm: this.selectedworkouts[0].cbpm,
       category:this.selectedworkouts[0].category
     });
+
+    } );
+    //this.workoutService.getAllWorkouts().subscribe(data => this.selectedworkouts = data );
+    
   }
 
   insertupdateWorkout(workout: workout) {
@@ -84,13 +98,7 @@ export class WorkoutComponent implements OnInit {
   }
 
 
-  // //From UI
-  // updateworkitem(workout:workout){
-  //   //alert(workoutId);
-  //   // this.router.navigate(['/updateworkout/'+workout]);
-  //   this.workout=workout;
-  //   this.insertupdateWorkout(this.workout);
-  // }
+
 
   onWorkoutFormSubmit() {
     console.log("Inside onWorkoutFormSubmit");
@@ -107,5 +115,13 @@ export class WorkoutComponent implements OnInit {
     this.categoryService.getCategoryList().subscribe(data => { console.log("getting category"); this.categories = data });
     //this.workoutService.getAllWorkouts().subscribe(data => this.workouts = data );
   };
+
+  deleteWorkout(workout_id:number){
+    this.workoutService.deleteWorkout(workout_id).subscribe(data => {
+      console.log("Workout deleted");
+      this.router.navigate(['/viewall']);
+    } );
+
+  }
 
 }

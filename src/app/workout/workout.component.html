@@ -13,13 +13,13 @@
     <tr>
       <td>Title:</td>
       <td>
-        <input formControlName="title">
+        <input formControlName="workout_title">
       </td>
     </tr>
     <tr>
       <td>Note:</td>
       <td>
-        <input formControlName="note">
+        <input formControlName="workout_note">
       </td>
     </tr>
     <tr>
@@ -28,20 +28,18 @@
         <input formControlName="cbpm">
       </td>
     </tr>
-    <!-- <tr><td>Category:</td><td><input formControlName="categoryName"></td></tr> -->
     <tr>
       <td>Category:</td>
       <td>
-        <!-- <div formGroupName="category"> -->
-          <select formGroupName="category" >
-            <div formControlName="categoryName" >
-            <option *ngFor="let category of categories">{{category}}</option>
-            <!-- <option *ngFor="let category of categories" ></option> -->
-          </div>
+        <div formGroupName="category">
+        <select formControlName="_catId">
+            <!--<div formControlName="categoryName" >[ngValue]="category._catId"-->
+            <option *ngFor="let category of categories" [value]="category._catId">{{category.categoryName}}</option>
+    
+          <!--</div>-->
           </select>
           
-        <!-- </div> -->
-          <!-- </div> -->
+            </div>
       </td>
     </tr>
     <tr>

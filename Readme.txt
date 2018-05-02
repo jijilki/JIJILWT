@@ -75,3 +75,39 @@ Solved by
   ],
   [...]
 })
+
+
+
+
+=========================================================================================
+
+detached entity passed to persist: com.workoutTracker.wt.model.Category; nested exception is org.hibernate.PersistentObjectException: detached entity passed to persist: com.workoutTracker.wt.model.Category"
+
+
+{"timestamp":"2018-04-30T07:21:48.150+0000","status":500,"error":"Internal Server Error","message":"Type definition error: [simple type, class org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: java.util.ArrayList[0]->com.workoutTracker.wt.response.WorkItemResponse[\"category\"]->com.workoutTracker.wt.model.Category_$$_jvste40_1[\"handler\"])","path":"/getWorkItems"}
+
+ ngModel cannot be used to register form controls with a parent formGroupName or formArrayName directive.
+
+      Option 1: Use formControlName instead of ngModel (reactive strategy):
+
+      
+    <div [formGroup]="myGroup">
+       <div formGroupName="person">
+          <input formControlName="firstName">
+       </div>
+    </div>
+
+    In your class:
+
+    this.myGroup = new FormGroup({
+       person: new FormGroup({ firstName: new FormControl() })
+    });
+
+      Option 2:  Update ngModel's parent be ngModelGroup (template-driven strategy):
+
+      
+    <form>
+       <div ngModelGroup="person">
+          <input [(ngModel)]="person.name" name="firstName">
+       </div>
+    </form>

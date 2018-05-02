@@ -5,15 +5,16 @@ import { of } from 'rxjs/observable/of';
 import { Response, Http} from '@angular/http';
  
 //mock imports
-import { WORKOUTS } from '../mock/workoutmocks';
+// import { WORKOUTS } from '../mock/workoutmocks';
 
 @Injectable()
 export class WorkoutService {
 
-  workouts = WORKOUTS;
+  // workouts = WORKOUTS;
   APP_URL = 'http://localhost:8080'
   _getWorkItemsURL = this.APP_URL + '/getWorkItems';
   _addWorkItemsURL = this.APP_URL + '/addWorkItem';
+  _deleteWorkItemsURL = this.APP_URL + '/deleteWorkItem';
   
   constructor(private _http: Http) { }
 
@@ -31,6 +32,12 @@ export class WorkoutService {
     });
   }
 
+  deleteWorkout(workout_id:number):Observable<any>{
+    return this._http.post(this._deleteWorkItemsURL, {workout_id})
+    .map(res => {
+      this.responseHandling(res);
+    });
+  }
 
   responseHandling(res){
     console.log(res);

@@ -15,8 +15,9 @@ const routes:Routes=[
 
   //Route from other screens.
   {path:'editworkout/:id',component:WorkoutComponent,data:{page:'editworkout'}},
+  {path:'deleteworkout/:id',component:WorkoutComponent,data:{page:'deleteworkout'}},
   {path:'updateworkout/:id',component:WorkoutComponent,data:{page:'updateworkout'}},
-
+  
   {path:'startworkout/:id',component:ActiveworkoutComponent,data:{page:'startworkout'}},
   {path:'endworkout/:id',component:ActiveworkoutComponent,data:{page:'endworkout'}},
 
