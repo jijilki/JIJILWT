@@ -20,6 +20,13 @@ import { ActiveworkoutService } from './services/activeworkout.service';
 import { CategoryPipe } from './pipes/category.pipe';
 import { ActiveworkoutComponent } from './activeworkout/activeworkout.component';
 
+
+import * as FusionCharts from 'fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
+import { FusionChartsModule } from 'angular4-fusioncharts';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +43,8 @@ import { ActiveworkoutComponent } from './activeworkout/activeworkout.component'
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    FusionChartsModule.forRoot(FusionCharts, Charts, FintTheme)
   ],
   providers: [
     WorkoutService,
