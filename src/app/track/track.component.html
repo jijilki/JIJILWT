@@ -1,11 +1,24 @@
 <p>
   track works!
 </p>
-<fusioncharts
+
+totalWorkoutToday{{totalWorkoutToday}}
+totalWorkoutThisWeek{{totalWorkoutThisWeek}}
+totalWorkoutThisMonth{{totalWorkoutThisMonth}}
+<!-- <fusioncharts
      [id]="id"
      [width]="width"
      [height]="height"
      [type]="type"
      [dataFormat]="dataFormat"
      [dataSource]="dataSource" 
+></fusioncharts> -->
+
+<fusioncharts
+     [id]="id"
+     [width]="width"
+     [height]="height"
+     [type]="type"
+     [dataFormat]="dataFormat"
+     [dataSource]="dayGraphDataSource" 
 ></fusioncharts>

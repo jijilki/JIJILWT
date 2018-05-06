@@ -3,6 +3,6 @@ export class workout {
     workout_id:number;
     workout_title:String;
     workout_note:String;
-    cbpm:Number;
+    cbpm:number;
     category:category;
 }

@@ -33,8 +33,8 @@ export class ActiveworkoutComponent implements OnInit {
       _catId: new FormControl('', Validators.required),
       categoryName: new FormControl('', Validators.required),
     }),
-    start_dt: new FormControl('', Validators.required),
-    end_dt: new FormControl('', Validators.required),
+    start_date: new FormControl('', Validators.required),
+    end_date: new FormControl('', Validators.required),
     start_time: new FormControl('', Validators.required),
     end_time: new FormControl('', Validators.required),
     active_workout_id: new FormControl('', Validators.required)
@@ -103,8 +103,8 @@ export class ActiveworkoutComponent implements OnInit {
         workout_note: this.selectedworkouts[0].workout_note,
         cbpm: this.selectedworkouts[0].cbpm,
         category: this.selectedworkouts[0].category,
-        start_dt: this.transformDate(Date.now()),
-        end_dt: this.transformDate(Date.now()),
+        start_date: this.transformDate(Date.now()),
+        end_date: this.transformDate(Date.now()),
         start_time: this.transformTime(Date.now()),
         end_time: this.transformTime(Date.now()),
         active_workout_id:0

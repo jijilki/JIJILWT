@@ -124,4 +124,12 @@ console.log(this.selectedworkouts);
 
   }
 
+  minus(){
+    this.workoutForm.controls['cbpm'].setValue(this.workoutForm.controls.cbpm.value-0.1);
+  }
+
+  plus(){
+    this.workoutForm.controls['cbpm'].setValue(this.workoutForm.controls.cbpm.value+0.1);
+  }
+
 }
