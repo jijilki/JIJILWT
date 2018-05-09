@@ -10,6 +10,8 @@ import { DatePipe } from '@angular/common';
 export class TrackComponent implements OnInit {
 
     id = 'chart1';
+    id2 = 'chart2';
+    id3 = 'chart3';
     width = 600;
     height = 400;
     type = 'column2d';
@@ -100,6 +102,117 @@ export class TrackComponent implements OnInit {
            
         ]
     }
+
+    weekGraphDataSource = {
+        "chart": {
+            "caption": "Week Graph",
+            // "subCaption": "Top 5 stores in last month by revenue",
+            // "numberprefix": "$",
+            "theme": "fint"
+        },
+        "data": [
+            {
+                "index":0,
+                "label": "Week1",
+                "value": "0"
+            },
+            {
+                "index":1,
+                "label": "Week2",
+                "value": "0"
+            },
+            {
+                "index":2,
+                "label": "Week3",
+                "value": "0"
+            },
+            {
+                "index":3,
+                "label": "Week4",
+                "value": "0"
+            }
+           
+        ]
+    }
+
+    monthGraphDataSource = {
+        "chart": {
+            "caption": "Month Graph",
+            // "subCaption": "Top 5 stores in last month by revenue",
+            // "numberprefix": "$",
+            "theme": "fint"
+        },
+        "data": [
+            {
+                "index":0,
+                "label": "1",
+                "value": "0"
+            },
+            {
+                "index":1,
+                "label": "2",
+                "value": "0"
+            },
+            {
+                "index":2,
+                "label": "3",
+                "value": "0"
+            },
+            {
+                "index":3,
+                "label": "4",
+                "value": "0"
+            },
+           
+            {
+                "index":3,
+                "label": "4",
+                "value": "0"
+            },
+
+            {
+                "index":4,
+                "label": "5",
+                "value": "0"
+            },
+            {
+                "index":5,
+                "label": "6",
+                "value": "0"
+            },
+            {
+                "index":6,
+                "label": "7",
+                "value": "0"
+            },
+            {
+                "index":7,
+                "label": "8",
+                "value": "0"
+            },
+            {
+                "index":8,
+                "label": "9",
+                "value": "0"
+            },
+            {
+                "index":9,
+                "label": "10",
+                "value": "0"
+            },
+            {
+                "index":10,
+                "label": "11",
+                "value": "0"
+            },
+            {
+                "index":11,
+                "label": "12",
+                "value": "0"
+            },
+
+        ]
+    }
     constructor(private activeworkoutService: ActiveworkoutService) {
 
     }
@@ -142,7 +255,7 @@ export class TrackComponent implements OnInit {
                 var workoutinMin =this.getMinsOfSingleWorkout(element);
                 this.totalWorkoutThisWeek = this.totalWorkoutThisWeek+workoutinMin;
                 var dt =new Date(element.start_date);
-                var day = dt.getDay()+ (day == 0 ? -6 : 1);
+                var day = dt.getDay()+ (day == 0 ? -6 : 1) -1;
                 this.dayGraphDataSource.data.forEach(graphElement => {
                     if(graphElement.index===day){
                         graphElement.value = graphElement.value+ workoutinMin*element.workout.cbpm
@@ -161,9 +274,21 @@ export class TrackComponent implements OnInit {
                  var workoutinMin =this.getMinsOfSingleWorkout(element);
                  this.totalWorkoutThisMonth = this.totalWorkoutThisMonth+workoutinMin;
              }
-             
+             this.getMonthlysplit(element);
          });
- 
+         
+     }
+
+     getMonthlysplit(element){
+        var workoutinMin =this.getMinsOfSingleWorkout(element);
+        var dt =new Date(element.start_date);
+        var mon=dt.getMonth();
+        this.monthGraphDataSource.data.forEach(graphElement => {
+            if(graphElement.index===mon){
+                graphElement.value = graphElement.value+ workoutinMin*element.workout.cbpm
+            }
+        });
+
      }
 
    

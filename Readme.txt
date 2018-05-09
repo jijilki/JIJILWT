@@ -111,3 +111,8 @@ detached entity passed to persist: com.workoutTracker.wt.model.Category; nested 
           <input [(ngModel)]="person.name" name="firstName">
        </div>
     </form>
+
+
+
+
+    

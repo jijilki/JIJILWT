@@ -1,16 +1,16 @@
 <div class="container">
-    <div class="row"> 
+    <div class="row">
         <div class="col-md-8">
-<div class="list-group">
-  <div class="list-group-item" *ngFor="let workout of workouts" >
-     {{ workout.workout_title}}
-     <div class="list-group-item">
-     <input type="button" value="Edit" (click)="edit(workout)" >
-     <input type="button" value="Delete" (click)="delete(workout)" >
-     <input *ngIf="viewWorkoutPageAction!=='End'" type="button" value="Start" (click)="start(workout)" >
-     <input *ngIf="viewWorkoutPageAction !=='Start'" type="button" value="End" (click)="end(workout)" >
-      </div>
-  </div>
-</div>
-</div>
-</div>
+            <div class="list-group">
+                <div class="list-group-item" *ngFor="let workout of workouts">
+                    {{ workout.workout_title}}
+                    <div class="list-group-item">
+                        <input type="button" value="Edit" (click)="edit(workout)">
+                        <input type="button" value="Delete" (click)="delete(workout)">
+                        <input *ngIf="viewWorkoutPageAction!=='End'" type="button" value="Start" (click)="start(workout)">
+                        <input *ngIf="viewWorkoutPageAction !=='Start'" type="button" value="End" (click)="end(workout)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

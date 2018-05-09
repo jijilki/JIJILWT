@@ -19,6 +19,7 @@ export class ActiveworkoutComponent implements OnInit {
   workoutId: number;
   page: String;
   workoutPageAction: String;
+  workoutPageHeader:String;
   activeWorkout: activeworkout;
   selWos: workout[];
   selectedworkouts: workout[];
@@ -71,6 +72,7 @@ export class ActiveworkoutComponent implements OnInit {
       this.activeWorkout = new activeworkout();
        this.activeWorkout.start_date= this.activeWorkoutForm.controls['start_date'].value;
        this.activeWorkout.start_time = this.activeWorkoutForm.controls['start_time'].value;
+       this.workoutPageHeader = "End";
       this.workoutPageAction = "End";
     }
 
@@ -83,6 +85,7 @@ export class ActiveworkoutComponent implements OnInit {
       this.activeWorkout.workout = this.selectedworkouts[0];
       this.activeworkoutService.saveActiveWorkout(this.activeWorkout).subscribe(data=>{});
       this.workoutPageAction = "Start";
+      this.workoutPageHeader = '';
       this.router.navigate(['/viewall']);
     }
 

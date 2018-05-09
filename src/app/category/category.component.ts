@@ -19,6 +19,7 @@ export class CategoryComponent implements OnInit {
   category:category;
   newCategoryName:string;
   srchWorkoutTxt:String;
+  editAction:String;
 
   constructor(
     private categoryService:CategoryService,
@@ -65,7 +66,7 @@ export class CategoryComponent implements OnInit {
     this.categoryService.updateCategory(this.category).subscribe(data =>{
         this.getCategory();
     } );
-    
+    this.editAction="Update";
   }
 
 }
