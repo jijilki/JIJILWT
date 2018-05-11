@@ -4,7 +4,7 @@
       <form>
         <div class="form-group row">
           <div class="col-md-6 col-md-offset-2 ">
-            <h3>Add Workout </h3>
+            <h3>Add Category </h3>
             <input type="text" class="form-control" id="srchWorkoutTxt" name="srchWorkoutTxt" [(ngModel)]="srchWorkoutTxt" placeholder="Search">
           </div>
         </div>
@@ -21,14 +21,14 @@
             <label>{{error}}</label>
           </div>
         </div>
-        <div class="list-group col-md-8  col-md-offset-2">
+        <div class="list-group col-md-6  col-md-offset-2">
           <div class="list-group-item" *ngFor="let category of categoryList | categoryPipe:srchWorkoutTxt">
             <div class="form-group row">
-              <div class="col-md-4" >
-                <input type="text" [ngModelOptions]="{standalone: true}" disabled [(ngModel)]="category.categoryName">
+              <div class="col-md-6" >
+                <input type="text" [ngModelOptions]="{standalone: true}" [disabled]="category._catId!=editedCat" [(ngModel)]="category.categoryName">
               </div>
               <div class="col-md-2">
-                <input type="button" value="Edit" (click)="edit(category)">
+                <input type="button"  (click)="edit(category)" value="{{category._catId!=editedCat? 'Edit':'Update'}}">
               </div>
               <div class="col-md-2">
                 <input type="button" value="Delete" (click)="delete(category)">
@@ -36,21 +36,9 @@
             </div>
           </div>
         </div>
-        <!-- <div class="col-md-1  col-md-offset-2 ">
-              <input type="button" value="Edit" (click)="edit(category)">
-            </div>
-            <div class="col-md-2">
-              <input type="button" value="Delete" (click)="delete(category)">
-            </div> -->
+      
 
       </form>
-
-
-      <!-- <div *ngFor="let category of categoryList | categoryPipe:srchWorkoutTxt">
-        {{ category.categoryName}}
-        <input type="button" value="Edit" (click)="edit(category)">
-        <input type="button" value="Delete" (click)="delete(category)">
-      </div> -->
 
     </div>
   </div>

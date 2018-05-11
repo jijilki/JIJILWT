@@ -1,8 +1,15 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-8">
+
+
+
+        <div class="col-md-6">
+                <div class="form-group row">
+                <input type="text" class="form-control" id="srchWorkoutTxt" name="srchWorkoutTxt" [(ngModel)]="srchWorkoutTxt" placeholder="Search">
+                </div>
+                <div class="form-group row">
             <div class="list-group">
-                <div class="list-group-item" *ngFor="let workout of workouts">
+                <div class="list-group-item" *ngFor="let workout of workouts | workoutPipe:srchWorkoutTxt">
                     {{ workout.workout_title}}
                     <div class="list-group-item">
                         <input type="button" value="Edit" (click)="edit(workout)">
@@ -12,5 +19,8 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
     </div>
+    <!-- *ngFor="let workout of workouts" -->
+    

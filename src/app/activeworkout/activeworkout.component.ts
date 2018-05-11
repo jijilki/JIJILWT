@@ -124,7 +124,7 @@ export class ActiveworkoutComponent implements OnInit {
   }
 
   transformTime(now) {
-    const myFormattedTime = this.pipe.transform(now, 'hh:mm:ss');
+    const myFormattedTime = this.pipe.transform(now, 'HH:mm:ss');
     return myFormattedTime;
   }
 

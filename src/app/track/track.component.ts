@@ -130,6 +130,11 @@ export class TrackComponent implements OnInit {
                 "index":3,
                 "label": "Week4",
                 "value": "0"
+            },
+            {
+                "index":4,
+                "label": "Week5",
+                "value": "0"
             }
            
         ]
@@ -233,6 +238,7 @@ export class TrackComponent implements OnInit {
                 this.getCurrentDayWorkoutTime();
                 this.getWeeklyWorkoutTime();
                 this.getMonthlyWorkoutTime();
+                //this.getWeeklySplitWorkoutTime();
             }
         );
     }
@@ -275,8 +281,24 @@ export class TrackComponent implements OnInit {
                  this.totalWorkoutThisMonth = this.totalWorkoutThisMonth+workoutinMin;
              }
              this.getMonthlysplit(element);
+             if (element.start_date.toString() >= this.transformDate(new Date(new Date().getFullYear(), new Date().getMonth(), 1))) {  
+             this.getWeeklysplit(element);
+             }
          });
          
+     }
+
+     getWeeklysplit(element){
+        //alert(this.getMonday(Date.now()));
+        var workoutinMin =this.getMinsOfSingleWorkout(element);
+        var dt =new Date(element.start_date);
+        var date=dt.getDate();
+        var week = Math.round(date/7)-1;
+        this.weekGraphDataSource.data.forEach(graphElement => {
+            if(graphElement.index===week){
+                graphElement.value = graphElement.value+ workoutinMin*element.workout.cbpm
+            }
+        });
      }
 
      getMonthlysplit(element){

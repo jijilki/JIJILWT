@@ -25,6 +25,7 @@ import * as FusionCharts from 'fusioncharts';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import { FusionChartsModule } from 'angular4-fusioncharts';
+import { WorkoutPipe } from './pipes/workout.pipe';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { FusionChartsModule } from 'angular4-fusioncharts';
     TestComponent,
     CategoryPipe,
     ActiveworkoutComponent,
+    WorkoutPipe,
   ],
   imports: [
     BrowserModule,
