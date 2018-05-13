@@ -27,7 +27,7 @@ export class ActiveworkoutComponent implements OnInit {
 
   activeWorkoutForm = new FormGroup({
     workout_id: new FormControl('', Validators.required),
-    workout_title: new FormControl('', Validators.required),
+    workout_title: new FormControl({disabled:true}, Validators.required),
     workout_note: new FormControl('', Validators.required),
     cbpm: new FormControl('', Validators.required),
     category: new FormGroup({
