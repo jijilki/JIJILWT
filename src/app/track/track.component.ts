@@ -9,7 +9,7 @@ import { DatePipe } from '@angular/common';
 })
 export class TrackComponent implements OnInit {
 
-    id = 'chart1';
+    id1 = 'chart1';
     id2 = 'chart2';
     id3 = 'chart3';
     width = 600;
@@ -25,6 +25,9 @@ export class TrackComponent implements OnInit {
     totalWorkoutToday:number =0;
     totalWorkoutThisWeek:number =0;
     totalWorkoutThisMonth:number=0;
+    monthCalBurn:number=0;
+    yearCalBurn:number=0;
+    weekCalBurn:number=0;
     dataSource = {
         "chart": {
             "caption": "Week Mart",
@@ -259,7 +262,9 @@ export class TrackComponent implements OnInit {
         this.activeworkouts.forEach(element => {
             if (element.start_date.toString() >= this.transformDate(this.getMonday(Date.now()))) {                
                 var workoutinMin =this.getMinsOfSingleWorkout(element);
+                var calBurn = workoutinMin*element.workout.cbpm;
                 this.totalWorkoutThisWeek = this.totalWorkoutThisWeek+workoutinMin;
+                this.weekCalBurn = this.weekCalBurn+calBurn;
                 var dt =new Date(element.start_date);
                 var day = dt.getDay()+ (day == 0 ? -6 : 1) -1;
                 this.dayGraphDataSource.data.forEach(graphElement => {
@@ -278,7 +283,9 @@ export class TrackComponent implements OnInit {
          this.activeworkouts.forEach(element => {
              if (element.start_date.toString() >= this.transformDate(new Date(new Date().getFullYear(), new Date().getMonth(), 1))) {                
                  var workoutinMin =this.getMinsOfSingleWorkout(element);
+                 var calBurn = workoutinMin*element.workout.cbpm;
                  this.totalWorkoutThisMonth = this.totalWorkoutThisMonth+workoutinMin;
+                 this.yearCalBurn = this.yearCalBurn+calBurn;
              }
              this.getMonthlysplit(element);
              if (element.start_date.toString() >= this.transformDate(new Date(new Date().getFullYear(), new Date().getMonth(), 1))) {  
@@ -291,6 +298,8 @@ export class TrackComponent implements OnInit {
      getWeeklysplit(element){
         //alert(this.getMonday(Date.now()));
         var workoutinMin =this.getMinsOfSingleWorkout(element);
+        var calBurn = workoutinMin*element.workout.cbpm;
+        this.monthCalBurn = this.monthCalBurn+calBurn;
         var dt =new Date(element.start_date);
         var date=dt.getDate();
         var week = Math.round(date/7)-1;

@@ -19,16 +19,16 @@
     </div>
     <div>
       <div class="form-group row col-md-6">
-        <fusioncharts [id]="id" [width]="width" [height]="height" [type]="type" [dataFormat]="dataFormat" [dataSource]="dayGraphDataSource"></fusioncharts>
+        <fusioncharts [id]="id1" [width]="width" [height]="height" [type]="type" [dataFormat]="dataFormat" [dataSource]="dayGraphDataSource"></fusioncharts>
         <label class="col-md-8" for="WorkkoutToday">Week Total Calories Burnt:</label>
-        <input type="number" class="col-md-2" value="{{WorkoutThisWeek}}" disabled>
+        <input type="number" class="col-md-2" value="{{weekCalBurn}}" disabled>
       </div>
     </div>
     <div>
       <div class="form-group row col-md-6">
-        <fusioncharts [id]="id" [width]="width" [height]="height" [type]="type" [dataFormat]="dataFormat" [dataSource]="weekGraphDataSource"></fusioncharts>
+        <fusioncharts [id]="id2" [width]="width" [height]="height" [type]="type" [dataFormat]="dataFormat" [dataSource]="weekGraphDataSource"></fusioncharts>
         <label class="col-md-8" for="WorkkoutMonth">Month Total Calories Burnt:</label>
-        <input type="number" class="col-md-2" value="{{WorkoutThisMonth}}" disabled>
+        <input type="number" class="col-md-2" value="{{monthCalBurn}}" disabled>
 
       </div>
     </div>
@@ -36,7 +36,7 @@
       <div class="form-group row col-md-6">
         <fusioncharts [id]="id3" [width]="width" [height]="height" [type]="type" [dataFormat]="dataFormat" [dataSource]="monthGraphDataSource"></fusioncharts>
         <label class="col-md-8" for="WorkkoutYear">Year Total Calories Burnt:</label>
-        <input type="number" class="col-md-2" value="{{WorkoutThisYear}}" disabled>
+        <input type="number" class="col-md-2" value="{{yearCalBurn}}" disabled>
 
       </div>
     </div>

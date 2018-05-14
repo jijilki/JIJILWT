@@ -25,10 +25,10 @@ export class WorkoutComponent implements OnInit {
   workoutPageAction: String;
   categories: category[];
   workoutForm = new FormGroup({
-    workout_id: new FormControl('', Validators.required),
+    workout_id: new FormControl('', [Validators.required,Validators.minLength(4)]),
     workout_title: new FormControl('', Validators.required),
     workout_note: new FormControl('', Validators.required),
-    cbpm: new FormControl('', Validators.required),
+    cbpm: new FormControl('', Validators.min(0.1)),
     category: new FormGroup({
       _catId: new FormControl('', Validators.required),
       categoryName: new FormControl('', Validators.required)
