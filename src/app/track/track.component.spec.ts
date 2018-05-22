@@ -1,14 +1,31 @@
-/*import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { WorkoutService } from '../services/workout.service'
+import { TrackComponent } from '../track/track.component';
+import { AppModule } from '../app.module'
 
-import { TrackComponent } from './track.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from '../app-routing.module';
+import { APP_BASE_HREF } from '@angular/common';
 
-describe('TrackComponent', () => {
+describe('Track', () => {
   let component: TrackComponent;
   let fixture: ComponentFixture<TrackComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrackComponent ]
+      declarations: [  ],
+      imports:[ BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
+    AppModule
+    ],
+      providers:[WorkoutService,{provide: APP_BASE_HREF, useValue: '/'}]
+      
     })
     .compileComponents();
   }));
@@ -24,5 +41,3 @@ describe('TrackComponent', () => {
   });
 });
 
-
-*/

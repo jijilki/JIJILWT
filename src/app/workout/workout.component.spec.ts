@@ -1,28 +1,38 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { FormControl, FormGroup, Validators,ReactiveFormsModule  } from '@angular/forms';
-import 'rxjs/add/operator/switchMap';
-
+import { WorkoutService } from '../services/workout.service'
+import { WorkoutComponent } from '../workout/workout.component';
+import { AppModule } from '../app.module';
 import { workout } from '../workout';
-import { category } from '..//category';
-import { WorkoutService } from '../services/workout.service';
-import { CategoryService } from '../services/category.service';
 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from '../app-routing.module';
+import { APP_BASE_HREF } from '@angular/common';
 
-import { WorkoutComponent } from './workout.component';
-
-
+class mockWorkitem extends workout{
+  
+}
 
 describe('WorkoutComponent', () => {
   let component: WorkoutComponent;
   let fixture: ComponentFixture<WorkoutComponent>;
-  let workServ :WorkoutService;
+  let workoutService:WorkoutService;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WorkoutComponent ],
-      imports:[ReactiveFormsModule]
+      declarations: [  ],
+      imports:[ BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
+    AppModule
+    ],
+      providers:[WorkoutService,{provide: APP_BASE_HREF, useValue: '/'}]
+      
     })
     .compileComponents();
   }));
@@ -33,29 +43,13 @@ describe('WorkoutComponent', () => {
     fixture.detectChanges();
   });
 
-
-  beforeEach(()=>{
-  TestBed.configureTestingModule({
-    declarations:[WorkoutComponent],
-    providers:[WorkoutService],
-    imports:[ReactiveFormsModule]
-  })
-
-  fixture = TestBed.createComponent(WorkoutComponent);
-  component = fixture.componentInstance;
-  workServ = TestBed.get(WorkoutService);
-
-});
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should get workouts',() =>{
-   expect(component).toBeTruthy();
-
+  it('get work item',() =>{
+    spyOn(workoutService,'getWorkout').and.returnValue(mockWorkitem);
   });
 
 });
-
 
