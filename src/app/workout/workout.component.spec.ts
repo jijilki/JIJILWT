@@ -10,15 +10,22 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from '../app-routing.module';
 import { APP_BASE_HREF } from '@angular/common';
+import { Observable} from 'rxjs/Observable';
 
 class mockWorkitem extends workout{
   
 }
 
+ class mockWorkItemService extends WorkoutService{
+  getAllWorkouts(){
+    return new Observable<mockWorkitem[]>();
+   }
+ }
+
 describe('WorkoutComponent', () => {
   let component: WorkoutComponent;
   let fixture: ComponentFixture<WorkoutComponent>;
-  let workoutService:WorkoutService;
+  let workoutService:mockWorkItemService;
 
 
   beforeEach(async(() => {
@@ -40,6 +47,7 @@ describe('WorkoutComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(WorkoutComponent);
     component = fixture.componentInstance;
+    workoutService = TestBed.get(WorkoutService);
     fixture.detectChanges();
   });
 
@@ -48,7 +56,9 @@ describe('WorkoutComponent', () => {
   });
 
   it('get work item',() =>{
-    spyOn(workoutService,'getWorkout').and.returnValue(mockWorkitem);
+    spyOn(workoutService,'getAllWorkouts').and.returnValue(mockWorkitem );
+    expect(component.getWorkout(1)).toBeTruthy();
+    expect(workoutService.getAllWorkouts).toHaveBeenCalled();
   });
 
 });

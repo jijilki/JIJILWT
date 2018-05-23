@@ -13,6 +13,7 @@ import { APP_BASE_HREF } from '@angular/common';
 describe('Track', () => {
   let component: TrackComponent;
   let fixture: ComponentFixture<TrackComponent>;
+  let date: number;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -34,10 +35,16 @@ describe('Track', () => {
     fixture = TestBed.createComponent(TrackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    date = Date.now();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it ('transform date',() =>{
+    expect(component.transformDate(date)).toBe("2018-05-23");
+
+  })
 });
 
