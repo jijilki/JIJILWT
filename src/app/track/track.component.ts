@@ -325,7 +325,8 @@ export class TrackComponent implements OnInit {
    
 
     transformDate(now) {
-        const myFormattedDate = this.pipe.transform(now, 'yyyy-MM-dd');
+     const myFormattedDate = this.pipe.transform(now, 'yyyy-MM-dd');
+    //  const  myFormattedDate ="2018-05-23";
         return myFormattedDate;
     }
 

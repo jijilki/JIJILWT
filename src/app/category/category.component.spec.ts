@@ -10,11 +10,11 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from '../app-routing.module';
 import { APP_BASE_HREF } from '@angular/common';
 
-describe('WorkoutComponent', () => {
+describe('CategoryComponent', () => {
   let component: CategoryComponent;
   let fixture: ComponentFixture<CategoryComponent>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
       declarations: [  ],
       imports:[ BrowserModule,
@@ -28,13 +28,12 @@ describe('WorkoutComponent', () => {
       
     })
     .compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(CategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
+  }));
+
+  
 
   it('should create', () => {
     expect(component).toBeTruthy();
