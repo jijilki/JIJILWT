@@ -18,12 +18,33 @@ import { AppRoutingModule } from '../app-routing.module';
 import { APP_BASE_HREF } from '@angular/common';
 import { WorkoutComponent } from './workout.component';
 
+import { Observable } from 'rxjs/Observable';
 
+import { of } from 'rxjs/observable/of';
+const    Aaaaa = [{ "workout_id": 2, "category": { "_catId": 35, "categoryName": "AAA" }, "workout_title": "aaa", "workout_note": "aaa", "cbpm": 0.1 }]
+const aaa = { "workout_title":"adfasfa", "workout_note":"adfasfa","cbpm":0,"workout_id": 2, "category": { "_catId": 35, "categoryName": "AAA" }};
+class MockWorkoutService  {
+  getAllWorkouts(): Observable<workout[]> {
+
+   return ;
+
+  }
+
+  save1Workout(workout:workout):String{
+    var status ="Success";
+    return status;
+  }
+
+  // [{"_catId":35,"categoryName":"AAA"},{"_catId":1,"categoryName":"AA"}]
+  // [{ "workout_id": 2, "category": { "_catId": 35, "categoryName": "AAA" }, "workout_title": "aaa", "workout_note": "aaa", "cbpm": 0.1 }]
+
+}
 
 describe('WorkoutComponent', () => {
   let component: WorkoutComponent;
   let fixture: ComponentFixture<WorkoutComponent>;
   let workServ: WorkoutService;
+  let mockWorkServ: MockWorkoutService;
 
   beforeEach((() => {
     TestBed.configureTestingModule({
@@ -35,11 +56,14 @@ describe('WorkoutComponent', () => {
         HttpModule,
         AppModule
       ],
-      providers: [WorkoutService, { provide: APP_BASE_HREF, useValue: '/' }]
+      providers: [{provide : WorkoutService,useValue : MockWorkoutService }, { provide: APP_BASE_HREF, useValue: '/' }]
 
     })
     fixture = TestBed.createComponent(WorkoutComponent);
     component = fixture.componentInstance;
+    workServ = TestBed.get(WorkoutService);
+    //spyOn(workServ,'saveWorkout').and.returnValue("Status");
+   // spyOn(workServ,'sadfaf').and.returnValue(Observable.of(Aaaaa));
     fixture.detectChanges();
   }));
 
@@ -49,18 +73,13 @@ describe('WorkoutComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should not get workitem for which no workout id doesnt exist',()=>{
-    spyOn(workServ,'getAllWorkouts').and.returnValue({});
-    expect(component.getWorkout(22)).toBeFalsy();
-    expect(workServ.getAllWorkouts()).toHaveBeenCalled();
-  })
 
-  
-  it('should  get workitem for which for the given workout id',()=>{
-    spyOn(workServ,'getAllWorkouts').and.returnValue({});
-    expect(component.getWorkout(22)).toBeFalsy();
-    expect(workServ.getAllWorkouts()).toHaveBeenCalled();
-  })
+
+   xit('Should create a work item ',() =>{
+     spyOn(workServ,'saveWorkout').and.returnValue("");
+     expect(component.insertupdateWorkout(aaa)).toBeFalsy();
+   
 
 });
 
+});

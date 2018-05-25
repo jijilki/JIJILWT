@@ -1,63 +1,28 @@
-/*import { TestBed, inject } from '@angular/core/testing';
+
+import { TestBed, inject } from '@angular/core/testing';
 
 import { WorkoutService } from './workout.service';
-import {
-  HttpModule,
-  Http,
-  Response,
-  ResponseOptions,
-  XHRBackend
-} from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
+import { Response, Http, Headers, RequestOptions } from '@angular/http';
 
-let httpClientSpy: {get :jasmine.Spy};
-let workoutService:WorkoutService;
 
-describe('WorkoutService', () => {
-  beforeEach(() => {
-    // httpClientSpy =jasmine.createSpyObj('HttpClient',['get']);
-    // workoutService = new WorkoutService(<any> httpClientSpy);
-    TestBed.configureTestingModule({
-      imports:[HttpModule],
-      providers: [
-       {provide: 'http://example.com', useValue: 'http://example.com' },
-        WorkoutService,
-        { provide: XHRBackend, useClass: MockBackend },
-      ]
-    });
+describe('WorkoutService',() =>{
+  let workoutService:WorkoutService;
+  let _http:Http;
+  let spy:any;
+  let res:any ={status:200};
+  beforeEach(() =>{
+    workoutService = new WorkoutService(_http);
+    res ={status:200};
   });
 
-  it('should be created', inject([WorkoutService], (service: WorkoutService) => {
-    expect(service).toBeTruthy();
-  }));
+  afterEach(()=>{
 
-  describe('getWorkouts()',() =>{
-    it('Should return an Observable <Workouts>',
-    inject([WorkoutService,MockBackend],(workoutService,mockBackEnd) =>{
-      const mockResponse ={
-        data:[
-          {},
-          {},
-          {}
-        ]
-      };
-    
-      mockBackEnd.connections.subscibe((connection)=>{
-        connection.mockRespond(new Response(new ResponseOptions({
-          body:JSON.stringify(mockResponse)
-        })))
-      });
-
-      workoutService.getWorkouts().subscibe((workouts) => {
-        expect(workouts.length).toBe(3);
-      }
-    
-    )
-
-    }
-
-    ))
   });
 
-});
-*/
+  it('To test rest error Handler',()=>{
+    
+    expect(workoutService.responseHandling(res)).toBeNull;
+
+  });
+
+})
