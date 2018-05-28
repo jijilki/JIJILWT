@@ -125,4 +125,21 @@ export class WorkoutComponent implements OnInit {
 
   }
 
+  minus(){
+     this.workoutForm.controls['cbpm'].setValue(this.round(Math.abs(this.workoutForm.controls.cbpm.value)-0.1,1));
+
+   }
+ 
+   plus(){
+     this.workoutForm.controls['cbpm'].setValue(this.round(Math.abs(this.workoutForm.controls.cbpm.value)+0.1,1));
+   }
+
+    round(number, precision) {
+  var shift = function (number, exponent) {
+    var numArray = ("" + number).split("e");
+    return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + exponent) : exponent));
+  };
+  return shift(Math.round(shift(number, +precision)), -precision);
+}
+
 }
