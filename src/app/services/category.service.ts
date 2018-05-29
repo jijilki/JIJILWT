@@ -12,7 +12,7 @@ import 'rxjs/add/operator/do';
 export class CategoryService {
 
  // category = CATEGORIES;
-  APP_URL = 'http://localhost:8080'
+  APP_URL = 'http://localhost:8081'
   _getCategoryUrl = this.APP_URL + '/getCategories';
   _addCategoryUrl = this.APP_URL + '/addCategory';
   _deleteCategoryurl = this.APP_URL + '/deleteCategory';
