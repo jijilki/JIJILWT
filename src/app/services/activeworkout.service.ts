@@ -9,7 +9,7 @@ import { Response, Http} from '@angular/http';
 @Injectable()
 export class ActiveworkoutService {
 
-  APP_URL = 'http://localhost:8081'
+  APP_URL = 'http://localhost:8081/WorkoutTracker';
   _addActiveWorkItemURL = this.APP_URL + '/addActiveWorkItem';
   _getAllActiveWorkItemsURL = this.APP_URL+'/getActiveWorkouts';
   

@@ -11,7 +11,7 @@ import { Response, Http} from '@angular/http';
 export class WorkoutService {
 
   // workouts = WORKOUTS;
-  APP_URL = 'http://localhost:8081'
+  APP_URL = 'http://localhost:8081/WorkoutTracker';
   _getWorkItemsURL = this.APP_URL + '/getWorkItems';
   _addWorkItemsURL = this.APP_URL + '/addWorkItem';
   _deleteWorkItemsURL = this.APP_URL + '/deleteWorkItem';
