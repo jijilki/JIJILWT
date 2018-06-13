@@ -114,5 +114,6 @@ detached entity passed to persist: com.workoutTracker.wt.model.Category; nested 
 
 
 
-
+Form Controls:
+ you should use formControlName="surveyType" on an input and not on a div
     
